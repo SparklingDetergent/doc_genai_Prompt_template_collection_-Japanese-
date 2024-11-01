@@ -10,7 +10,7 @@ Here's a draft layout for the README.md that aligns with your specifications:
 
 ---
 
-## 🟥🔶🟩 ○○したい
+## 🟥🔶🔵 ○○したい
 
 ### タグ
 `#カテゴリ1` `#カテゴリ2` `#カテゴリ3`
@@ -45,7 +45,7 @@ Here's a draft layout for the README.md that aligns with your specifications:
 
 ---
 
-## 🟥🔶🟩 △△を実行したい
+## 🟥🔶🔵 △△を実行したい
 
 ### タグ
 `#カテゴリA` `#カテゴリB` `#カテゴリC`
