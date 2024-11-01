@@ -65,7 +65,7 @@ powershell で fizzbuzz。
 <details>
   <summary>生成結果</summary>
 
-```markdown
+````markdown
 
 
 You: 
@@ -228,7 +228,7 @@ FizzBuzz -expression "if ($i % 3 -eq 0 -and $i % 5 -eq 0) { 'FizzBuzz' } elseif 
 以上がフェーズ5からフェーズ6までのFizzBuzzの実装方法です。それぞれのフェーズでは、コードの柔軟性や機能性を改善していきます。
 
 
-```
+````
 </details>
 <details>
   <summary>テンプレート説明</summary>
