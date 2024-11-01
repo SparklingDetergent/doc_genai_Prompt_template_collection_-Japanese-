@@ -403,7 +403,6 @@ FizzBuzz 100
 
 
 
-```
 </details>
 <details>
   <summary>テンプレート説明</summary>
