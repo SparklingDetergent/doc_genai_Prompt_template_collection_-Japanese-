@@ -128,3 +128,33 @@
 
 
 
+
+### 🔴🟡🟢 
+
+#### タグ
+`#` `#` `#`
+
+#### プロンプトテンプレート
+```markdown
+
+```
+<details>
+  <summary>生成結果</summary>
+```markdown
+
+```
+</details>
+<details>
+  <summary>テンプレート説明</summary>
+```markdown
+
+```
+</details>
+---
+<br/><br/> <br/><br/>
+
+
+
+
+
+
