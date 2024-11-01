@@ -67,6 +67,167 @@ powershell で fizzbuzz。
 
 ```markdown
 
+
+You: 
+powershell で fizzbuzz。
+
+フェーズ1から段階的に完成度を高めるものとします。
+
+
+
+Copilot: もちろんです。PowerShellでFizzBuzzを実装する方法について、フェーズ1から段階的に説明します。
+
+フェーズ1: 基本的なFizzBuzzを実装
+
+```
+for ($i = 1; $i -le 100; $i++) {
+    if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
+        Write-Output "FizzBuzz"
+    } elseif ($i % 3 -eq 0) {
+        Write-Output "Fizz"
+    } elseif ($i % 5 -eq 0) {
+        Write-Output "Buzz"
+    } else {
+        Write-Output $i
+    }
+}
+```
+
+フェーズ2: 関数を使ってFizzBuzzを実装
+
+```
+function FizzBuzz {
+    param (
+        [int]$start,
+        [int]$end
+    )
+    for ($i = $start; $i -le $end; $i++) {
+        if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
+            Write-Output "FizzBuzz"
+        } elseif ($i % 3 -eq 0) {
+            Write-Output "Fizz"
+        } elseif ($i % 5 -eq 0) {
+            Write-Output "Buzz"
+        } else {
+            Write-Output $i
+        }
+    }
+}
+
+FizzBuzz -start 1 -end 100
+```
+
+フェーズ3: 関数をより効率的に行う
+
+```
+function FizzBuzz {
+    param (
+        [int]$start,
+        [int]$end
+    )
+    for ($i = $start; $i -le $end; $i++) {
+        $output = ""
+        if ($i % 3 -eq 0) {
+            $output += "Fizz"
+        }
+        if ($i % 5 -eq 0) {
+            $output += "Buzz"
+        }
+        if ($output -eq "") {
+            $output = $i
+        }
+        Write-Output $output
+    }
+}
+
+FizzBuzz -start 1 -end 100
+```
+
+フェーズ4: ハッシュテーブルを使用してFizzBuzzを実装
+
+```
+function FizzBuzz {
+    param (
+        [int]$start,
+        [int]$end
+    )
+    $hash = @{
+        3 = "Fizz"
+        5 = "Buzz"
+    }
+    for ($i = $start; $i -le $end; $i++) {
+        $output = ""
+        foreach ($key in $hash.Keys) {
+            if ($i % $key -eq 0) {
+                $output += $hash[$key]
+            }
+        }
+        if ($output -eq "") {
+            $output = $i
+        }
+        Write-Output $output
+    }
+}
+
+FizzBuzz -start 1 -end 100
+```
+
+以上がフェーズ1からフェーズ4までのFizzBuzzの実装方法です。それぞれのフェーズでは、コードの効率性や可読性を改善していきます。
+
+
+
+You: 続けてください。
+
+
+
+Copilot: フェーズ5: オプション引数を使用してFizzBuzzを実装
+
+```
+function FizzBuzz {
+    param (
+        [int]$start,
+        [int]$end,
+        [string]$fizz = "Fizz",
+        [string]$buzz = "Buzz"
+    )
+    for ($i = $start; $i -le $end; $i++) {
+        $output = ""
+        foreach ($key in $hash.Keys) {
+            if ($i % $key -eq 0) {
+                $output += $hash[$key]
+            }
+        }
+        if ($output -eq "") {
+            $output = $i
+        }
+        Write-Output $output
+    }
+}
+
+FizzBuzz -start 1 -end 100 -fizz "FOO" -buzz "BAR"
+```
+
+フェーズ6: 構文解析を使用してFizzBuzzを実装
+
+```
+function FizzBuzz {
+    param (
+        [string]$expression,
+        [int]$start,
+        [int]$end
+    )
+    for ($i = $start; $i -le $end; $i++) {
+        $output = Invoke-Expression "$expression"
+        Write-Output $output
+    }
+}
+
+FizzBuzz -expression "if ($i % 3 -eq 0 -and $i % 5 -eq 0) { 'FizzBuzz' } elseif ($i % 3 -eq 0) { 'Fizz' } elseif ($i % 5 -eq 0) { 'Buzz' } else { $i }" -start 1 -end 100
+```
+
+以上がフェーズ5からフェーズ6までのFizzBuzzの実装方法です。それぞれのフェーズでは、コードの柔軟性や機能性を改善していきます。
+
+
 ```
 </details>
 <details>
@@ -82,7 +243,7 @@ powershell で fizzbuzz。
 # 詳細な説明
   - ２つめの「続けて」を繰り返すことで、その生成AIのパフォーマンスを引き出せるかもしれない。
 # カスタマイズのポイント
-  - 「レベル１から順により詳細にしてください。」など、言い回しを変える
+  - 「レベル１から順により詳細にしてください。」「ステップ１からステップバイステップで積み重ねていってください。」など、言い回しを変えてみる。
 # 注意事項
   - あえて方向性を示していないことで、多様な回答が得られるようになっている反面、期待した回答が得られにくいかもしれない。
 ```
@@ -122,96 +283,126 @@ powershellでfizzbuzz。
   <summary>生成結果</summary>
 
 ```markdown
-user powershellでfizzbuzz。レベル１を最低限要求を満たす内容とし、レベル８を、不特定多数の人間が利用しても問題が無く、読みやすい、説明しやすい、汎用性の高い内容とします。初めに、各レベル（レベル１、レベル２，レベル３，レベル４、レベル５、レベル６，レベル７，レベル８）で目指す完成度の目標を日本語で説明してください。その後、まずはレベル１の内容だけを示してください。<|im_end|>
 
-assistant 各レベルの目標：
 
-1. レベル1: 基本的なFizzBuzzプログラムを作成し、出力が期待通りであることを確認します。
-2. レベル2: FizzBuzzプログラムに条件分岐機能を追加し、3と5の倍数の場合に「Fizz」、「Buzz」という文字列が出力されるようにします。
-3. レベル3: FizzBuzzプログラムにループ機能を追加し、指定された範囲内の数字についてFizzBuzzを行うようします。
-4. レベル4: FizzBuzzプログラムに例外処理機能を追加し、入力値が不適切な場合（例：負数や非整数）に対応します。
-5. レベル5: FizzBuzzプログラムにコメントを追加し、コードの目的や動作を説明します。
-6. レベル6: FizzBuzzプログラムに変数名を改善し、読みやすさと理解性を向上させます。
-7. レベル7: FizzBuzzプログラムに関数化を行って、再利用可能性を高めます。
-8. レベル8: FizzBuzzプログラムを汎用的に設計し、他の言語でも簡単に移植できる形で作成します。
+You: 
+powershellでfizzbuzz。
 
-レベル1のPowerShellスクリプト：
+レベル１を最低限要求を満たす内容とし、レベル８を、不特定多数の人間が利用しても問題が無く、
+読みやすい、説明しやすい、汎用性の高い内容とします。
 
+初めに、各レベル（レベル１、レベル２，レベル３，レベル４、レベル５、レベル６，レベル７，レベル８）
+で目指す完成度の目標を日本語で説明してください。
+
+その後、まずはレベル１の内容だけを示してください。
+
+
+
+Copilot: ### レベルごとの目標説明
+
+1. **レベル１**：基本的なFizzBuzz実装
+   - 簡単なFizzBuzzプログラムを作成します。
+   - 基本的な条件分岐とループを使用します。
+   - 無論の問題なく実行できる程度のコードです。
+   
+2. **レベル２**：関数化
+   - FizzBuzz関数を作成し、再利用性を高めます。
+   - パラメータを渡して実行できるようにします。
+   
+3. **レベル３**：拡張性
+   - フizzとbuzzの文字列を変更できるようにする機能を追加します。
+   
+4. **レベル４**：入力チェック
+   - 入力値の検証を追加し、不適切な入力に対してエラーメッセージを表示します。
+   
+5. **レベル５**：拡張機能：FizBuzの数字変更
+   - FizzBuzzの数字（3と5）を変更できるようにする機能を追加します。
+   
+6. **レベル６**：拡張機能：出力形式の変更
+   - FizzBuzzの出力形式（コンソールに表示する）を変更できるようにする機能を追加します。
+   
+7. **レベル７**：拡張機能：複数のFizzBuzzを実行
+   - 複数のFizzBuzzルールを同時に実行できるようにする機能を追加します。
+   
+8. **レベル８**：拡張機能：GUI化
+   - FizzBuzzアプリケーションをGUIで実装し、不特定多数の人間が利用しても問題が無く、読みやすい、説明しやすい、汎用性の高い内容とします。
+
+### レベル１の内容
+
+以下は、最適化版のFizzBuzzのPowerShellコードです。
+
+```powershell
 for ($i = 1; $i -le 100; $i++) {
-    if ($i % 3 -eq 0) {
-        Write-Output "Fizz"
-    }
-    elseif ($i % 5 -eq 0) {
-        Write-Output "Buzz"
-    }
-    else {
-        Write-Output $i
+    if ($i % 15 -eq 0) { "FizzBuzz" }
+    elseif ($i % 3 -eq 0) { "Fizz" }
+    elseif ($i % 5 -eq 0) { "Buzz" }
+    else { $i }
+}
+```
+
+このコードは、1から100までの数をループし、各数を3で割った余りが0なら"Fizz"、5で割った余りが0なら"Buzz"、両方で割った余りが0なら"FizzBuzz"、それ以外ならその数値を表示します。
+
+
+
+You: レベル２
+
+
+
+Copilot: レベル２では、FizzBuzz関数を作成し、再利用性を高めます。以下は、PowerShellでFizzBuzz関数を作成した例です。
+
+```powershell
+function FizzBuzz($n) {
+    for ($i = 1; $i -le $n; $i++) {
+        if ($i % 15 -eq 0) { "FizzBuzz" }
+        elseif ($i % 3 -eq 0) { "Fizz" }
+        elseif ($i % 5 -eq 0) { "Buzz" }
+        else { $i }
     }
 }
 
+# 1から100までのFizzBuzzを実行
+FizzBuzz 100
+```
 
-このスクリプトは、1から100までの数字についてループを行い、それぞれの数字が3または5の倍数であるかどうかを判定します。如果是，则输出"Fizz"或"Buzz"; 否则，输出该数字本身。
-
-user レベル２<|im_end|>
-
-assistant レベル2では、FizzBuzzプログラムに条件分岐機能を追加する必要があります。具体的には、3と5の倍数の場合、「Fizz」、「Buzz」という文字列が出力されるようにします。
-
-以下はPowerShellスクリプトの例です：
-
-for ($i = 1; $i -le 100; $i++) {
-    if (($i % 3 -eq 0) -and ($i % 5 -eq 0)) {
-        Write-Output "FizzBuzz"
-    }
-    elseif ($i % 3 -eq 0) {
-        Write-Output "Fizz"
-    }
-    elseif ($i % 5 -eq 0) {
-        Write-Output "Buzz"
-    }
-    else {
-        Write-Output $i
-    }
-}
+この関数は、FizzBuzzのルールをカプセル化しています。任意の整数$nを引数に取り、その整数までのFizzBuzzを出力します。この関数は、任意の場面で呼び出せます。
 
 
-このスクリプトでは、最初のif文が3と5の両方の倍数である場合、「FizzBuzz」出力をします。それ以外の場合は、元々のルール（3の倍数なら「Fizz」、5の倍数なら「Buzz」）を適用します。最後に、以上にも当てはまらない数字についてはその値自身を出力します。
 
-user レベル４，レベル５，レベル６，レベル７を統合<|im_end|>
+You: レベル４，レベル５，レベル６，レベル７を統合
 
-assistant もちろんです。以下は、各レベル（4, 5, 6, 7）を統合したPowerShellスクリプトです：
 
-function Get-FizzBuzz($start, $end)
-{
-    # 入力値の検証
-    if (-not ([int]::TryParse($start, [ref]$null)) -or -not ([int]::TryParse($end, [ref]$null)))
-    {
-        throw '入力値は整数でなければなりません'
+
+Copilot: 以下に、FizzBuzzのPowerShellスクリプトをレベル4からレベル7まで統合したものです。このスクリプトでは、入力値を検証し、FizzとBuzzの文字列を変更できるようにし、FizzBuzzの数字も変更できます。また、出力形式を変更できるようにし、複数のFizzBuzzルールを同時に実行できるようにします。
+
+```powershell
+function FizzBuzz($n, $fizz = "Fizz", $buzz = "Buzz", $fizzNum = 3, $buzzNum = 5) {
+    if ($n -lt 1) {
+        Write-Host "エラー: nは正の整数である必要があります。"
+        return
     }
 
-    for ($i = $start; $i -le $end; $i++)
-    {
-        # FizzBuzzの条件分岐
-        switch ($true)
-        {
-            { $i % 3 -eq 0 -and $i % 5 -eq 0 } { "FizzBuzz" }
-            { $i % 3 -eq 0 } { "Fizz" }
-            { $i % 5 -eq 0 } { "Buzz" }
-            default { $i.ToString() }
-        }
+    for ($i = 1; $i -le $n; $i++) {
+        $result = ""
+        if ($i % $fizzNum -eq 0) { $result += $fizz }
+        if ($i % $buzzNum -eq 0) { $result += $buzz }
+
+        if ($result -eq "") { $i }
+        else { $result }
     }
 }
 
-# 使用例：1から100までのFizzBuzz出力
-Get-FizzBuzz 1 100
+# 1から100までのFizzBuzzを実行
+FizzBuzz 100
+```
+
+このスクリプトでは、FizzBuzz関数の引数を追加し、それぞれの引数にデフォルト値を設定しています。また、入力値を検証する条件分岐も追加しています。これにより、不適切な入力に対してエラーメッセージを表示できるようになりました。
+
+また、FizzとBuzzの文字列を変更できるようにし、FizzBuzzの数字も変更できるようにしました。これにより、FizzBuzzのルールをカスタマイズできます。
+
+出力形式も変更できるようにし、複数のFizzBuzzルールを同時に実行できるようにしました。これにより、FizzBuzzの複数の条件をカプセル化できます。
 
 
-このスクリプトでは、まず関数Get-FizzBuzzを作成します。この関数には開始値と終了値を引数として取ります。
 
-次に、入力された値が整数であることを確認するために例外処理を行います。如果不是，则抛出异常。
-
-最後に、forループを使用して指定された範囲内の数字についてFizzBuzzを行うためのswitch文を使用します。switch文の中では、各条件（3と5の倍数、3の倍数、5の倍数）に対応する文字列または数字が出力されます。
-
-使用例では、1から100までのFizzBuzz出力を表示しています。
 ```
 </details>
 <details>
@@ -221,15 +412,19 @@ Get-FizzBuzz 1 100
 # 目的
   - タイトルの通り
 # 使用シーン
-  - とりあえず生成AIで基本的なことから順に何かを出力したい、という時
+  - とりあえず生成AIで基本的なことから順に何かを出力したいし、ある程度完成形の方向性を示したい、という時
 # 期待される効果
-  - 基本的なことから順に内容を理解しやすい回答
+  - 基本的なことから順に内容を理解しやすい回答であり、方向性がある状態
 # 詳細な説明
-  - ２つめの「続けて」を繰り返すことで、その生成AIのパフォーマンスを引き出せるかもしれない。
+  - 最初のレベルと最後のレベルの目標を示すだけで、その中間のレベルの目標は生成AIが調整する流れを期待している。
+  - 「各レベル（レベル１、レベル２，。。。」としているのは、こうしないと勝手に途中のレベルを省略されてしまうことがあるから明確にしている。
+  - はじめに各レベルの目的を示すようにし、まずはレベル１の内容を示すようにすることで、どういった方向性の回答か先にチェックできる。
+  - 後続のプロンプトの「レベル２」や、「○○を統合」により、各レベルの目標に該当する内容を取り出すイメージ。
 # カスタマイズのポイント
-  - 「レベル１から順により詳細にしてください。」など、言い回しを変える
+  - レベル４まで、などと短くしたり、逆にレベル１６まで、と長くしたりする。（長くしすぎると内容が薄くなる可能性もある）
+  - 「レベル１から順により詳細にしてください。」「ステップ１からステップバイステップで積み重ねていってください。」など、言い回しを変えてみる。
 # 注意事項
-  - あえて方向性を示していないことで、多様な回答が得られるようになっている反面、期待した回答が得られにくいかもしれない。
+  - 方向性を示すことで期待した回答が得られやすい反面、かえって回答のバリエーションが減ってしまう可能性もある。
 ```
 </details>
 
