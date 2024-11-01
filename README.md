@@ -1,71 +1,100 @@
 # doc_genai_Prompt_template_collection_-Japanese-
 プロンプトテンプレート集（日本語）
 
-# プロンプトテンプレート集
+# プロンプトテンプレート集 - GitHubリファレンス用
 
-## はじめに
-このリポジトリでは、さまざまなプロンプトテンプレートを集めています。各テンプレートは、特定の目的に応じて利用できるように設計されています。以下のテンプレートを参考にして、あなたのプロジェクトに役立ててください。
+こちらは、様々な目的に応じたプロンプトテンプレート集です。各プロンプトの見出しには、利用しやすさを3色で示し、「いまいち」「まあまあ」「つかえる」といった表現で評価しています。
 
 ---
 
-## ○○したい
-<span style="color: red;">いまいち</span> | <span style="color: orange;">まあまあ</span> | <span style="color: green;">つかえる</span>
+## 🟥🔶🟩 ○○したい
 
 ### タグ
-- タグ1
-- タグ2
-- タグ3
+`#カテゴリ1` `#カテゴリ2` `#カテゴリ3`
 
 ### プロンプトテンプレート
+
 ```markdown
-ここにプロンプトテンプレートを記入します。
+ここにプロンプト内容
 ```
-<button onclick="copyToClipboard('ここにプロンプトテンプレートを記入します。')">コピー</button>
+
+<div style="text-align: right;">
+<button onclick="copyToClipboard('ここにプロンプト内容')">📋 コピー</button>
+</div>
 
 <details>
-<summary>生成した結果</summary>
+  <summary>生成結果</summary>
 
+```markdown
+ここに生成された結果
 ```
-ここに生成した結果を記入します。
-```
+
+<div style="text-align: right;">
+<button onclick="copyToClipboard('ここに生成された結果')">📋 コピー</button>
+</div>
+
 </details>
 
 <details>
-<summary>プロンプトテンプレートの説明</summary>
-
-このプロンプトテンプレートは、○○を実現するために設計されています。具体的な使用例や注意点について説明します。
+  <summary>テンプレート説明</summary>
+  このプロンプトは〇〇を目的としています。使用時の注意点や工夫すべきポイントなどを説明します。
 </details>
 
 ---
 
-## ○○したい
-<span style="color: red;">いまいち</span> | <span style="color: orange;">まあまあ</span> | <span style="color: green;">つかえる</span>
+## 🟥🔶🟩 △△を実行したい
 
 ### タグ
-- タグ1
-- タグ2
-- タグ3
+`#カテゴリA` `#カテゴリB` `#カテゴリC`
 
 ### プロンプトテンプレート
+
 ```markdown
-ここにプロンプトテンプレートを記入します。
+ここに別のプロンプト内容
 ```
-<button onclick="copyToClipboard('ここにプロンプトテンプレートを記入します。')">コピー</button>
+
+<div style="text-align: right;">
+<button onclick="copyToClipboard('ここに別のプロンプト内容')">📋 コピー</button>
+</div>
 
 <details>
-<summary>生成した結果</summary>
+  <summary>生成結果</summary>
 
+```markdown
+ここに生成された別の結果
 ```
-ここに生成した結果を記入します。
-```
+
+<div style="text-align: right;">
+<button onclick="copyToClipboard('ここに生成された別の結果')">📋 コピー</button>
+</div>
+
 </details>
 
 <details>
-<summary>プロンプトテンプレートの説明</summary>
-
-このプロンプトテンプレートは、○○を実現するために設計されています。具体的な使用例や注意点について説明します。
+  <summary>テンプレート説明</summary>
+  このプロンプトは△△を目的としています。使用するシーンや活用事例についても説明しています。
 </details>
 
 ---
 
-<!-- 追加のテンプレートをここに続けて記入できます -->
+### コピー機能
+
+コピー機能は以下のJavaScriptを活用します：
+
+```html
+<script>
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    alert('コピーしました: ' + text);
+  }, function(err) {
+    alert('コピーに失敗しました');
+  });
+}
+</script>
+```
+
+---
+
+## 注意事項
+- 「いまいち」「まあまあ」「つかえる」の評価は目安として参考にしてください。
+- プロンプトの内容は適宜修正・最適化してください。
