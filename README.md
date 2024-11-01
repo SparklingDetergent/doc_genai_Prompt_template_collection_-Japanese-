@@ -45,6 +45,48 @@
 ## タグ2
 # 技術
 ## プログラミング
+
+
+### 🟢 
+
+#### タグ
+`#コーディング` `#ローカル` `#`
+
+#### プロンプトテンプレート
+
+```markdown
+str = str & " , c02 "
+
+これの続きをc03からc10まで真似して書いてください。
+繰り返し構文を用いず 真似するだけでいいです。
+言語は変えずにお願いします。
+```
+
+<details>
+  <summary>生成結果</summary>
+
+```markdown
+str = str & " , c03 "
+str = str & " , c04 "
+str = str & " , c05 "
+str = str & " , c06 "
+str = str & " , c07 "
+str = str & " , c08 "
+str = str & " , c09 "
+str = str & " , c10 "
+```
+
+</details>
+
+<details>
+  <summary>テンプレート説明</summary>
+
+</details>
+
+---
+<br/><br/> <br/><br/>
+
+
 ## データサイエンス
 ## ウェブ開発
 # 創造的
