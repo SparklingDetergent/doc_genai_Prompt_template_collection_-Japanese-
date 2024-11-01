@@ -42,7 +42,7 @@
 
 ---
 
-## 🟥🔶🟩 △△を実行したい
+## 🔴🟡🟢 △△を実行したい
 
 ### タグ
 `#カテゴリA` `#カテゴリB` `#カテゴリC`
@@ -77,23 +77,7 @@
 
 ---
 
-### コピー機能
 
-コピー機能は以下のJavaScriptを活用します：
-
-```html
-<script>
-function copyToClipboard(text) {
-  navigator.clipboard.writeText(text).then(function() {
-    alert('コピーしました: ' + text);
-  }, function(err) {
-    alert('コピーに失敗しました');
-  });
-}
-</script>
-```
-
----
 
 ## 注意事項
 - 「いまいち」「まあまあ」「つかえる」の評価は目安として参考にしてください。
