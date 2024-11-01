@@ -6,6 +6,8 @@
 こちらは、様々な目的に応じたプロンプトテンプレート集です。各プロンプトの見出しには、利用しやすさを3色で示し、🔴「いまいち」🟡「まあまあ」🟢「つかえる」といった表現で評価しています。
 
 ---
+<br/><br/> <br/><br/>
+<br/><br/> <br/><br/>
 
 ## 🔴🟡🟢 ○○したい
 
@@ -18,9 +20,6 @@
 ここにプロンプト内容
 ```
 
-<div style="text-align: right;">
-<button onclick="copyToClipboard('ここにプロンプト内容')">📋 コピー</button>
-</div>
 
 <details>
   <summary>生成結果</summary>
@@ -29,9 +28,6 @@
 ここに生成された結果
 ```
 
-<div style="text-align: right;">
-<button onclick="copyToClipboard('ここに生成された結果')">📋 コピー</button>
-</div>
 
 </details>
 
@@ -41,6 +37,9 @@
 </details>
 
 ---
+<br/><br/> <br/><br/>
+<br/><br/> <br/><br/>
+<br/><br/> <br/><br/>
 
 ## 🔴🟡🟢 △△を実行したい
 
@@ -53,9 +52,6 @@
 ここに別のプロンプト内容
 ```
 
-<div style="text-align: right;">
-<button onclick="copyToClipboard('ここに別のプロンプト内容')">📋 コピー</button>
-</div>
 
 <details>
   <summary>生成結果</summary>
@@ -64,9 +60,6 @@
 ここに生成された別の結果
 ```
 
-<div style="text-align: right;">
-<button onclick="copyToClipboard('ここに生成された別の結果')">📋 コピー</button>
-</div>
 
 </details>
 
@@ -76,6 +69,9 @@
 </details>
 
 ---
+<br/><br/> <br/><br/>
+<br/><br/> <br/><br/>
+<br/><br/> <br/><br/>
 
 
 
