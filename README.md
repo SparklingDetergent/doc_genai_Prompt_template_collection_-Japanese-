@@ -54,14 +54,14 @@
 
 ### 🟡 生成AIの回答の精度やボリュームを高めたい
 #### プロンプトテンプレート
-```markdown
+````markdown
 powershell で fizzbuzz。
 
 フェーズ1から段階的に完成度を高めるものとします。
-```
-```markdown
+````
+````markdown
 続けてください。
-```
+````
 <details>
   <summary>生成結果</summary>
 
@@ -233,7 +233,7 @@ FizzBuzz -expression "if ($i % 3 -eq 0 -and $i % 5 -eq 0) { 'FizzBuzz' } elseif 
 <details>
   <summary>テンプレート説明</summary>
 
-```markdown
+````markdown
 # 目的
   - タイトルの通り
 # 使用シーン
@@ -247,7 +247,7 @@ FizzBuzz -expression "if ($i % 3 -eq 0 -and $i % 5 -eq 0) { 'FizzBuzz' } elseif 
   - 「レベル１から順により詳細にしてください。」「ステップ１からステップバイステップで積み重ねていってください。」など、言い回しを変えてみる。
 # 注意事項
   - あえて方向性を示していないことで、多様な回答が得られるようになっている反面、期待した回答が得られにくいかもしれない。
-```
+````
 </details>
 
 #### タグ
@@ -263,7 +263,7 @@ FizzBuzz -expression "if ($i % 3 -eq 0 -and $i % 5 -eq 0) { 'FizzBuzz' } elseif 
 
 ### 🟢 生成AIの回答の精度やボリュームを高めたい（詳細に指示、方向性を示す）
 #### プロンプトテンプレート
-```markdown
+````markdown
 powershellでfizzbuzz。
 
 レベル１を最低限要求を満たす内容とし、レベル８を、不特定多数の人間が利用しても問題が無く、
@@ -273,17 +273,17 @@ powershellでfizzbuzz。
 で目指す完成度の目標を日本語で説明してください。
 
 その後、まずはレベル１の内容だけを示してください。
-```
-```markdown
+````
+````markdown
 レベル２
-```
-```markdown
+````
+````markdown
 レベル４，レベル５，レベル６，レベル７を統合
-```
+````
 <details>
   <summary>生成結果</summary>
 
-```markdown
+````markdown
 
 
 You: 
@@ -402,13 +402,13 @@ FizzBuzz 100
 
 出力形式も変更できるようにし、複数のFizzBuzzルールを同時に実行できるようにしました。これにより、FizzBuzzの複数の条件をカプセル化できます。
 
-
+````
 
 </details>
 <details>
   <summary>テンプレート説明</summary>
 
-```markdown
+````markdown
 # 目的
   - タイトルの通り
 # 使用シーン
@@ -427,7 +427,7 @@ FizzBuzz 100
   - 「レベル」を「フェーズ」「ステップ」など、言い回しを変えてみる。
 # 注意事項
   - 方向性を示すことで期待した回答が得られやすい反面、かえって回答のバリエーションが減ってしまう可能性もある。
-```
+````
 </details>
 
 #### タグ
@@ -447,16 +447,16 @@ FizzBuzz 100
 
 ### 🔴 ソースコード１行を真似してインクリメントして作りたい
 #### プロンプトテンプレート
-```markdown
+````markdown
 str = str & " , c02 "
 
 このVBAの続きをc03からc10まで真似して書いてください。
 繰り返し構文を用いず 真似するだけでいいです。
-```
+````
 <details>
   <summary>生成結果</summary>
 
-```markdown
+````markdown
 str = str & " , c03 "
 str = str & " , c04 "
 str = str & " , c05 "
@@ -465,12 +465,12 @@ str = str & " , c07 "
 str = str & " , c08 "
 str = str & " , c09 "
 str = str & " , c10 "
-```
+````
 </details>
 <details>
   <summary>テンプレート説明</summary>
 
-```markdown
+````markdown
 # 目的
   - タイトルの通り
 # 使用シーン
@@ -484,7 +484,7 @@ str = str & " , c10 "
   - 言語や開始終了の部分
 # 注意事項
   - 表計算で管理するほうが後々便利かもしれない。。。
-```
+````
 </details>
 
 #### タグ
@@ -517,20 +517,20 @@ str = str & " , c10 "
 
 ### 🔴🟡🟢 
 #### プロンプトテンプレート
-```markdown
+````markdown
 
-```
+````
 <details>
   <summary>生成結果</summary>
 
-```markdown
+````markdown
 
-```
+````
 </details>
 <details>
   <summary>テンプレート説明</summary>
 
-```markdown
+````markdown
 # 目的
   - タイトルの通り
 # 使用シーン
@@ -543,7 +543,7 @@ str = str & " , c10 "
   - 
 # 注意事項
   - 
-```
+````
 </details>
 
 #### タグ
