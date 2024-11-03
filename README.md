@@ -11,9 +11,23 @@
 - 🟡 まあまあ：概ね期待通りの結果が得られます
 - 🟢 つかえる：高い確率で期待通りの結果が得られます
 
-## 注意事項
+### 注意事項
 - 「いまいち」「まあまあ」「つかえる」の評価は目安として参考にしてください。
 - プロンプトの内容は適宜修正・最適化してください。
+
+## プロンプトテンプレートの使い方について
+````markdown
+ * 以下のプロンプトの例では「`」で囲った部分が個別の要件に合わせて修正する部分です。
+ * 「`」で囲った部分以外の部分についても、「テンプレート説明」を基に作成者の用途に応じて修正・最適化してください。
+ * なお、「`」自体はマークダウン形式の表現で目立つように表示しているだけなので、生成AIの回答に影響が出ないと考えていますが、気になる場合は削除してご利用ください。
+
+`str = str & " , c02 "`
+
+この `VBA` の続きを `c03` から `c10` まで真似して書いてください。
+繰り返し構文を用いず 真似するだけでいいです。
+
+````
+
 
 ---
 <br/><br/> <br/><br/>
@@ -140,7 +154,7 @@ Copilot: 1. 情報検索: ユーザーが「現在の天気」を尋ねると、
 ### 🟡 生成AIの回答の精度やボリュームを高めたい
 #### プロンプトテンプレート
 ````markdown
-powershell で fizzbuzz。
+`powershell で fizzbuzz。`
 
 フェーズ1から段階的に完成度を高めるものとします。
 ````
@@ -154,17 +168,16 @@ powershell で fizzbuzz。
 
 
 You: 
-powershell で fizzbuzz。
+`powershell で fizzbuzz。`
 
 フェーズ1から段階的に完成度を高めるものとします。
 
 
 
-Copilot: もちろんです。PowerShellでFizzBuzzを実装する方法について、フェーズ1から段階的に説明します。
+Copilot: 
+もちろんです！フェーズ1のFizzBuzzをPowerShellで作成します。
 
-フェーズ1: 基本的なFizzBuzzを実装
-
-```
+```powershell
 for ($i = 1; $i -le 100; $i++) {
     if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
         Write-Output "FizzBuzz"
@@ -178,139 +191,38 @@ for ($i = 1; $i -le 100; $i++) {
 }
 ```
 
-フェーズ2: 関数を使ってFizzBuzzを実装
+このスクリプトは1から100までの数を表示し、その数が3で割り切れる場合は "Fizz"、5で割り切れる場合は "Buzz"、両方で割り切れる場合は "FizzBuzz" を出力します。
 
-```
-function FizzBuzz {
-    param (
-        [int]$start,
-        [int]$end
-    )
-    for ($i = $start; $i -le $end; $i++) {
-        if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
-            Write-Output "FizzBuzz"
-        } elseif ($i % 3 -eq 0) {
-            Write-Output "Fizz"
-        } elseif ($i % 5 -eq 0) {
-            Write-Output "Buzz"
-        } else {
-            Write-Output $i
-        }
+
+
+You: 
+続けてください。
+
+
+
+Copilot: 
+フェーズ2では、FizzBuzzをユーザーが指定した範囲内に制限するようにしましょう。ユーザーからの入力を取得し、その範囲内でFizzBuzzを実行します。
+
+```powershell
+$from = Read-Host "開始番号を入力"
+$to = Read-Host "終了番号を入力"
+
+for ($i = $from; $i -le $to; $i++) {
+    if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
+        Write-Output "FizzBuzz"
+    } elseif ($i % 3 -eq 0) {
+        Write-Output "Fizz"
+    } elseif ($i % 5 -eq 0) {
+        Write-Output "Buzz"
+    } else {
+        Write-Output $i
     }
 }
-
-FizzBuzz -start 1 -end 100
 ```
 
-フェーズ3: 関数をより効率的に行う
+このスクリプトでは、`Read-Host` コマンドを使用してユーザーからの入力を取得します。ユーザーが指定した範囲内でFizzBuzzを実行します。
 
-```
-function FizzBuzz {
-    param (
-        [int]$start,
-        [int]$end
-    )
-    for ($i = $start; $i -le $end; $i++) {
-        $output = ""
-        if ($i % 3 -eq 0) {
-            $output += "Fizz"
-        }
-        if ($i % 5 -eq 0) {
-            $output += "Buzz"
-        }
-        if ($output -eq "") {
-            $output = $i
-        }
-        Write-Output $output
-    }
-}
-
-FizzBuzz -start 1 -end 100
-```
-
-フェーズ4: ハッシュテーブルを使用してFizzBuzzを実装
-
-```
-function FizzBuzz {
-    param (
-        [int]$start,
-        [int]$end
-    )
-    $hash = @{
-        3 = "Fizz"
-        5 = "Buzz"
-    }
-    for ($i = $start; $i -le $end; $i++) {
-        $output = ""
-        foreach ($key in $hash.Keys) {
-            if ($i % $key -eq 0) {
-                $output += $hash[$key]
-            }
-        }
-        if ($output -eq "") {
-            $output = $i
-        }
-        Write-Output $output
-    }
-}
-
-FizzBuzz -start 1 -end 100
-```
-
-以上がフェーズ1からフェーズ4までのFizzBuzzの実装方法です。それぞれのフェーズでは、コードの効率性や可読性を改善していきます。
-
-
-
-You: 続けてください。
-
-
-
-Copilot: フェーズ5: オプション引数を使用してFizzBuzzを実装
-
-```
-function FizzBuzz {
-    param (
-        [int]$start,
-        [int]$end,
-        [string]$fizz = "Fizz",
-        [string]$buzz = "Buzz"
-    )
-    for ($i = $start; $i -le $end; $i++) {
-        $output = ""
-        foreach ($key in $hash.Keys) {
-            if ($i % $key -eq 0) {
-                $output += $hash[$key]
-            }
-        }
-        if ($output -eq "") {
-            $output = $i
-        }
-        Write-Output $output
-    }
-}
-
-FizzBuzz -start 1 -end 100 -fizz "FOO" -buzz "BAR"
-```
-
-フェーズ6: 構文解析を使用してFizzBuzzを実装
-
-```
-function FizzBuzz {
-    param (
-        [string]$expression,
-        [int]$start,
-        [int]$end
-    )
-    for ($i = $start; $i -le $end; $i++) {
-        $output = Invoke-Expression "$expression"
-        Write-Output $output
-    }
-}
-
-FizzBuzz -expression "if ($i % 3 -eq 0 -and $i % 5 -eq 0) { 'FizzBuzz' } elseif ($i % 3 -eq 0) { 'Fizz' } elseif ($i % 5 -eq 0) { 'Buzz' } else { $i }" -start 1 -end 100
-```
-
-以上がフェーズ5からフェーズ6までのFizzBuzzの実装方法です。それぞれのフェーズでは、コードの柔軟性や機能性を改善していきます。
+注意：PowerShellは整数型に変換できない場合、エラーが発生しますので、整数型に変換できるようになっています。
 
 
 ````
@@ -349,7 +261,7 @@ FizzBuzz -expression "if ($i % 3 -eq 0 -and $i % 5 -eq 0) { 'FizzBuzz' } elseif 
 ### 🟢 生成AIの回答の精度やボリュームを高めたい（詳細に指示、方向性を示す）
 #### プロンプトテンプレート
 ````markdown
-powershellでfizzbuzz。
+`powershellでfizzbuzz。`
 
 レベル１を最低限要求を満たす内容とし、レベル８を、不特定多数の人間が利用しても問題が無く、
 読みやすい、説明しやすい、汎用性の高い内容とします。
@@ -372,7 +284,7 @@ powershellでfizzbuzz。
 
 
 You: 
-powershellでfizzbuzz。
+`powershellでfizzbuzz。`
 
 レベル１を最低限要求を満たす内容とし、レベル８を、不特定多数の人間が利用しても問題が無く、
 読みやすい、説明しやすい、汎用性の高い内容とします。
@@ -384,108 +296,103 @@ powershellでfizzbuzz。
 
 
 
-Copilot: ### レベルごとの目標説明
+Copilot: 
+### 各レベルの目標
 
-1. **レベル１**：基本的なFizzBuzz実装
-   - 簡単なFizzBuzzプログラムを作成します。
-   - 基本的な条件分岐とループを使用します。
-   - 無論の問題なく実行できる程度のコードです。
-   
-2. **レベル２**：関数化
-   - FizzBuzz関数を作成し、再利用性を高めます。
-   - パラメータを渡して実行できるようにします。
-   
-3. **レベル３**：拡張性
-   - フizzとbuzzの文字列を変更できるようにする機能を追加します。
-   
-4. **レベル４**：入力チェック
-   - 入力値の検証を追加し、不適切な入力に対してエラーメッセージを表示します。
-   
-5. **レベル５**：拡張機能：FizBuzの数字変更
-   - FizzBuzzの数字（3と5）を変更できるようにする機能を追加します。
-   
-6. **レベル６**：拡張機能：出力形式の変更
-   - FizzBuzzの出力形式（コンソールに表示する）を変更できるようにする機能を追加します。
-   
-7. **レベル７**：拡張機能：複数のFizzBuzzを実行
-   - 複数のFizzBuzzルールを同時に実行できるようにする機能を追加します。
-   
-8. **レベル８**：拡張機能：GUI化
-   - FizzBuzzアプリケーションをGUIで実装し、不特定多数の人間が利用しても問題が無く、読みやすい、説明しやすい、汎用性の高い内容とします。
+1. **レベル1**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。
+2. **レベル2**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。また、コードの可読性を高める。
+3. **レベル3**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。また、コードの可読性を高める。コードの効率性を追求。
+4. **レベル4**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。また、コードの可読性を高める。コードの効率性を追求。エラーハンドリングを実装。
+5. **レベル5**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。また、コードの可読性を高める。コードの効率性を追求。エラーハンドリングを実装。コードの拡張性を追求。
+6. **レベル6**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。また、コードの可読性を高める。コードの効率性を追求。エラーハンドリングを実装。コードの拡張性を追求。コードのテストを実装。
+7. **レベル7**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。また、コードの可読性を高める。コードの効率性を追求。エラーハンドリングを実装。コードの拡張性を追求。コードのテストを実装。コードのドキュメンテーションを追加。
+8. **レベル8**: 基本的なFizzBuzzの機能を実装する。コードが動作し、正しく出力されるようにする。また、コードの可読性を高める。コードの効率性を追求。エラーハンドリングを実装。コードの拡張性を追求。コードのテストを実装。コードのドキュメンテーションを追加。コードが不特定多数の人間が利用しても問題が無く、読みやすい、説明しやすい、汎用性の高い。
 
-### レベル１の内容
-
-以下は、最適化版のFizzBuzzのPowerShellコードです。
+### レベル1のFizzBuzz
 
 ```powershell
 for ($i = 1; $i -le 100; $i++) {
-    if ($i % 15 -eq 0) { "FizzBuzz" }
-    elseif ($i % 3 -eq 0) { "Fizz" }
-    elseif ($i % 5 -eq 0) { "Buzz" }
-    else { $i }
+    if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
+        Write-Output "FizzBuzz"
+    } elseif ($i % 3 -eq 0) {
+        Write-Output "Fizz"
+    } elseif ($i % 5 -eq 0) {
+        Write-Output "Buzz"
+    } else {
+        Write-Output $i
+    }
 }
 ```
 
-このコードは、1から100までの数をループし、各数を3で割った余りが0なら"Fizz"、5で割った余りが0なら"Buzz"、両方で割った余りが0なら"FizzBuzz"、それ以外ならその数値を表示します。
+このコードは基本的なFizzBuzzの機能を実装しています。1から100までの数を順番に出力し、3の倍数の場合は"Fizz"、5の倍数の場合は"Buzz"、両方の倍数の場合は"FizzBuzz"と出力します。
 
 
 
-You: レベル２
+You: 
+レベル２
 
 
 
-Copilot: レベル２では、FizzBuzz関数を作成し、再利用性を高めます。以下は、PowerShellでFizzBuzz関数を作成した例です。
+Copilot: 
+### レベル2のFizzBuzz
 
 ```powershell
-function FizzBuzz($n) {
-    for ($i = 1; $i -le $n; $i++) {
-        if ($i % 15 -eq 0) { "FizzBuzz" }
-        elseif ($i % 3 -eq 0) { "Fizz" }
-        elseif ($i % 5 -eq 0) { "Buzz" }
-        else { $i }
+function Get-FizzBuzz([int]$start = 1, [int]$end = 100) {
+    for ($i = $start; $i -le $end; $i++) {
+        if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
+            Write-Output "FizzBuzz"
+        } elseif ($i % 3 -eq 0) {
+            Write-Output "Fizz"
+        } elseif ($i % 5 -eq 0) {
+            Write-Output "Buzz"
+        } else {
+            Write-Output $i
+        }
     }
 }
 
-# 1から100までのFizzBuzzを実行
-FizzBuzz 100
+Get-FizzBuzz
 ```
 
-この関数は、FizzBuzzのルールをカプセル化しています。任意の整数$nを引数に取り、その整数までのFizzBuzzを出力します。この関数は、任意の場面で呼び出せます。
+このコードは、FizzBuzzの機能を関数として実装しています。`Get-FizzBuzz`関数は、2つの引数（開始数と終了数）を受け取り、その範囲内の数をFizzBuzzのルールに従って出力します。また、関数の呼び出しは省略できるよう、デフォルト値を設定しています。
 
 
 
-You: レベル４，レベル５，レベル６，レベル７を統合
+You: 
+レベル４，レベル５，レベル６，レベル７を統合
 
 
 
-Copilot: 以下に、FizzBuzzのPowerShellスクリプトをレベル4からレベル7まで統合したものです。このスクリプトでは、入力値を検証し、FizzとBuzzの文字列を変更できるようにし、FizzBuzzの数字も変更できます。また、出力形式を変更できるようにし、複数のFizzBuzzルールを同時に実行できるようにします。
+Copilot: 
+### レベル4, レベル5, レベル6, レベル7のFizzBuzz
 
 ```powershell
-function FizzBuzz($n, $fizz = "Fizz", $buzz = "Buzz", $fizzNum = 3, $buzzNum = 5) {
-    if ($n -lt 1) {
-        Write-Host "エラー: nは正の整数である必要があります。"
-        return
-    }
-
-    for ($i = 1; $i -le $n; $i++) {
-        $result = ""
-        if ($i % $fizzNum -eq 0) { $result += $fizz }
-        if ($i % $buzzNum -eq 0) { $result += $buzz }
-
-        if ($result -eq "") { $i }
-        else { $result }
+function Get-FizzBuzz([int]$start = 1, [int]$end = 100) {
+    for ($i = $start; $i -le $end; $i++) {
+        if ($i % 3 -eq 0 -and $i % 5 -eq 0) {
+            Write-Output "FizzBuzz"
+        } elseif ($i % 3 -eq 0) {
+            Write-Output "Fizz"
+        } elseif ($i % 5 -eq 0) {
+            Write-Output "Buzz"
+        } else {
+            Write-Output $i
+        }
     }
 }
 
-# 1から100までのFizzBuzzを実行
-FizzBuzz 100
+try {
+    Get-FizzBuzz
+} catch {
+    Write-Error "Error: $_"
+}
+
+Get-FizzBuzz -start 101 -end 200
 ```
 
-このスクリプトでは、FizzBuzz関数の引数を追加し、それぞれの引数にデフォルト値を設定しています。また、入力値を検証する条件分岐も追加しています。これにより、不適切な入力に対してエラーメッセージを表示できるようになりました。
-
-また、FizzとBuzzの文字列を変更できるようにし、FizzBuzzの数字も変更できるようにしました。これにより、FizzBuzzのルールをカスタマイズできます。
-
-出力形式も変更できるようにし、複数のFizzBuzzルールを同時に実行できるようにしました。これにより、FizzBuzzの複数の条件をカプセル化できます。
+このコードは、FizzBuzzの機能を関数として実装しています。`Get-FizzBuzz`関数は、2つの引数（開始数と終了数）を受け取り、その範囲内の数をFizzBuzzのルールに従って出力します。また、関数の呼び出しは省略できるよう、デフォルト値を設定しています。
+また、エラーハンドリングも実装しています。`try`ブロック内で`Get-FizzBuzz`関数を呼び出し、`catch`ブロック内でエラーが発生した場合にエラーメッセージを出力します。
+さらに、関数の拡張性も追求しています。新しい範囲の数をFizzBuzzのルールに従って出力したい場合は、`-start`と`-end`パラメータを指定して関数を再度呼び出すことができます。
 
 ````
 
@@ -542,6 +449,19 @@ FizzBuzz 100
   <summary>生成結果</summary>
 
 ````markdown
+
+You: 
+`str = str & " , c02 "`
+
+この `VBA` の続きを `c03` から `c10` まで真似して書いてください。
+繰り返し構文を用いず 真似するだけでいいです。
+
+
+
+Copilot: 
+申し訳ありませんが、そのような繰り返し構文を使用せずに `c03` から `c10` まで `str` 変数に追加する方法は、直接書く必要があります。以下はその例です：
+
+```vba
 str = str & " , c03 "
 str = str & " , c04 "
 str = str & " , c05 "
@@ -550,6 +470,10 @@ str = str & " , c07 "
 str = str & " , c08 "
 str = str & " , c09 "
 str = str & " , c10 "
+```
+
+この方法は、各 `c` 値を一つずつ追加しています。ただし、大量の追加操作を行う場合は、性能に問題が生じる可能性があります。この場合、ループを使用した方が更に効率的になるかもしれません。
+
 ````
 </details>
 <details>
