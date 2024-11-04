@@ -749,6 +749,280 @@ sqlite_web test.db -p 8081
 
 
 
+### 🟡 資料を簡単に把握する
+#### プロンプトテンプレート
+````markdown
+簡潔に要約してください。
+````
+````markdown
+もっと簡潔にお願いします。
+````
+````markdown
+もう少し詳しくお願いします。
+````
+````markdown
+他と比べてこの資料にはどのような特徴があるでしょうか。
+````
+<details>
+  <summary>生成結果</summary>
+
+````markdown
+
+
+🌸😊You: 
+簡潔に要約してください。
+
+![](http://media.charlesleifer.com/blog/photos/sqlite-web.png)
+
+`sqlite-web` is a web-based SQLite database browser written in Python.
+
+Project dependencies:
+
+* [flask](http://flask.pocoo.org)
+* [peewee](http://docs.peewee-orm.com)
+* [pygments](http://pygments.org)
+
+### Installation
+
+```sh
+$ pip install sqlite-web
+```
+
+### Usage
+
+```sh
+$ sqlite_web /path/to/database.db
+```
+
+### Features
+
+* Works with your existing SQLite databases, or can be used to create new databases.
+* Add or drop:
+  * Tables
+  * Columns (with support for older versions of Sqlite)
+  * Indexes
+* Export data as JSON or CSV.
+* Import JSON or CSV files.
+* Browse table data.
+* Insert, Update or Delete rows.
+
+### Screenshots
+
+The index page shows some basic information about the database, including the number of tables and indexes, as well as its size on disk:
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620302295.png)
+
+The `structure` tab displays information about the structure of the table, including columns, indexes, triggers, and foreign keys (if any exist). From this page you can also create, rename or drop columns and indexes.
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620314144.png)
+
+Columns are easy to add, drop or rename:
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620333535.png)
+
+The `content` tab displays all the table data. Links in the table header can be used to sort the data:
+
+![](https://media.charlesleifer.com/blog/photos/im-1707415896996.png)
+
+The `query` tab allows you to execute arbitrary SQL queries on a table. The query results are displayed in a table and can be exported to either JSON or CSV:
+
+![](https://media.charlesleifer.com/blog/photos/im-1707415396996.png)
+
+The `import` tab supports importing CSV and JSON files into a table. There is an option to automatically create columns for any unrecognized keys in the import file:
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620413940.png)
+
+The `export` tab supports exporting all, or a subset, of columns:
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620429054.png)
+
+Basic INSERT, UPDATE and DELETE queries are supported:
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620441528.png)
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620459831.png)
+
+![](https://media.charlesleifer.com/blog/photos/im-1694620475286.png)
+
+### Command-line options
+
+The syntax for invoking sqlite-web is:
+
+```console
+
+$ sqlite_web [options] /path/to/database-file.db
+```
+
+The following options are available:
+
+* `-p`, `--port`: default is 8080
+* `-H`, `--host`: default is 127.0.0.1
+* `-d`, `--debug`: default is false
+* `-l`, `--log-file`: filename for application logs.
+* `-x`, `--no-browser`: do not open a web-browser when sqlite-web starts.
+* `-P`, `--password`: prompt for password to access sqlite-web.
+  Alternatively, the password can be stored in the "SQLITE_WEB_PASSWORD"
+  environment variable, in which case the application will not prompt for a
+  password, but will use the value from the environment.
+* `-r`, `--read-only`: open database in read-only mode.
+* `-R`, `--rows-per-page`: set pagination on content page, default 50 rows.
+* `-Q`, `--query-rows-per-page`: set pagination on query page, default 1000 rows.
+* `-T`, `--no-truncate`: disable ellipsis for long text values. If this option
+  is used, the full text value is always shown.
+* `-e`, `--extension`: path or name of loadable extension(s). To load
+  multiple extensions, specify ``-e [path]`` for each extension.
+* `-f`, `--foreign-keys`: enable foreign-key constraint pragma.
+* `-u`, `--url-prefix`: URL prefix for application, e.g. "/sqlite-web".
+* `-c`, `--cert` and ``-k``, ``--key`` - specify SSL cert and private key.
+* `-a`, `--ad-hoc` - run using an ad-hoc SSL context.
+
+### Using docker
+
+A Dockerfile is provided with sqlite-web. To use:
+
+```console
+
+$ cd docker/  # Change dirs to the dir containing Dockerfile
+$ docker build -t coleifer/sqlite-web .
+$ docker run -it --rm \
+    -p 8080:8080 \
+    -v /path/to/your-data:/data \
+    -e SQLITE_DATABASE=db_filename.db \
+    coleifer/sqlite-web
+```
+
+
+
+🚀🤖Copilot: 
+`sqlite-web`はPythonで書かれたSQLiteデータベースブラウザのWebアプリケーションです。主な特徴として、既存のSQLiteデータベースを操作でき、テーブル、列、インデックスの追加や削除、データのエクスポートとインポートなどがサポートされています。また、SQLクエリの実行も可能で、結果はJSONやCSV形式で取得できます。コマンドラインオプションでポート番号、ホストアドレス、デバッグモードなどを指定できます。Dockerを使用して簡単に実行することもできます。
+
+
+
+🌸😊You: 
+もっと簡潔にお願いします。
+
+
+
+🚀🤖Copilot: 
+`sqlite-web`はPythonで書かれたSQLiteデータベースブラウザのWebアプリです。主要な機能にはテーブルや列の管理、データのエクスポート・インポート、SQLクエリの実行などがあります。コマンドラインオプションで設定を変更でき、Dockerでも簡単に実行できます。
+
+
+
+🌸😊You: 
+もう少し詳しくお願いします。
+
+
+
+🚀🤖Copilot: 
+`sqlite-web`はPythonで作られたSQLiteデータベースブラウザのWebアプリケーションです。主な特徴として、SQLiteデータベースの管理が簡単にでき、テーブル、列、インデックスの追加や削除、データのエクスポートとインポートなどがサポートされています。また、SQLクエリの実行も可能で、結果はJSONやCSV形式で取得できます。コマンドラインオプションでポート番号、ホストアドレス、デバッグモードなどを指定できます。Dockerを使用して簡単に実行することもできます。
+
+
+
+🌸😊You: 
+他と比べてこの資料にはどのような特徴があるでしょうか。
+
+
+
+🚀🤖Copilot: 
+すみません、私はAIアシスタントなので、特定の資料と比較する能力はありません。しかし、一般的にSQLiteデータベースブラウザのWebアプリケーションは、SQLiteデータベースの管理、テーブルや列の追加・削除、データのエクスポート・インポート、SQLクエリの実行などがサポートされています。`sqlite-web`はPythonで書かれているため、その機能はPythonのライブラリを使用しています。また、Dockerを使用して簡単に実行できることも利点の一つです。
+
+
+
+🌸😊You: 
+簡潔に要約してください。
+
+（`sqlite-web`のREADME）
+
+
+
+🚀🤖Copilot: 
+`sqlite-web`はPythonで書かれたSQLiteデータベースブラウザのWebアプリケーションです。主な特徴として、既存のSQLiteデータベースの管理、テーブルや列の追加・削除、データのエクスポート・インポート、SQLクエリの実行などがサポートされています。また、コマンドラインオプションで設定を変更でき、Dockerでも簡単に実行できます。
+
+
+
+🌸😊You: 
+もっと簡潔にお願いします。
+
+
+
+🚀🤖Copilot: 
+`sqlite-web`はPythonで作られたSQLiteデータベースブラウザのWebアプリケーションです。主要な機能は、データベースの管理やテーブル・列の操作、データのエクスポート・インポート、SQLクエリの実行などです。コマンドラインオプションで設定を変更でき、Dockerでも簡単に使用できます。
+
+
+
+🌸😊You: 
+他と比べてどのような特徴がありますか。
+
+
+
+🚀🤖Copilot: 
+すみません、私はAIアシスタントなので、特定の資料と比較する能力はありません。ただし、一般的にSQLiteデータベースブラウザのWebアプリケーションは、SQLiteデータベースの管理、テーブルや列の操作、データのエクスポート・インポート、SQLクエリの実行などがサポートされています。`sqlite-web`はPythonで書かれているため、その機能はPythonのライブラリを使用しています。また、Dockerを使用して簡単に実行できることも利点の一つです。
+
+
+
+🌸😊You: 
+もう少し詳しくお願いします。
+
+
+
+🚀🤖Copilot: 
+すみません、私はAIアシスタントなので、特定の資料と比較する能力はありません。しかし、一般的にSQLiteデータベースブラウザのWebアプリケーションは、SQLiteデータベースの管理、テーブルや列の操作、データのエクスポート・インポート、SQLクエリの実行などがサポートされています。`sqlite-web`はPythonで書かれているため、その機能はPythonのライブラリを使用しています。また、Dockerを使用して簡単に実行できることも利点の一つです。`sqlite-web`は、既存のSQLiteデータベースを操作でき、テーブル、列、インデックスの追加や削除、データのエクスポートとインポートなどがサポートされています。また、SQLクエリの実行も可能で、結果はJSONやCSV形式で取得できます。コマンドラインオプションでポート番号、ホストアドレス、デバッグモードなどを指定できます。Dockerを使用して簡単に実行することもできます。
+
+
+
+````
+</details>
+<details>
+  <summary>テンプレート説明</summary>
+
+````markdown
+--------------------------------------------------------------------------------------------------------------------
+# 目的
+  - タイトルの通り
+# 使用シーン
+  - 資料の把握が必要となった際に、内容を簡潔に把握するために利用。
+# 期待される効果
+  - 要約し、特徴を掴むことを期待。
+# キーワード
+  - **簡潔に要約** . . . 資料の文章を要約することを期待。**シンプルに整理** など、別の言い回しでも可。
+  - **もっと簡潔に** . . . より簡潔に要約することを期待。
+  - **他と比べて** . . . 生成AIの持つ情報と比較することを期待。**一般的なものと比較して** など、別の言い回しでも可。
+  - **どのような特徴が** . . . 資料の特徴を炙り出す。要約とは異なる観点の回答を期待。 
+  - **もう少し詳しく** . . . 簡潔になりすぎた場合に説明を追加することを期待。**〇〇について具体的に** などキーワード指定も可。
+# 詳細な説明
+  - 生成AIチャットの利用方法としては、初歩的な内容となります。
+  - 上記のキーワード以外でも、下記のカスタマイズを通して情報を出力することができます。
+  - 資料に対する多角的な情報を得ることで理解の促進を期待します。
+# カスタマイズのポイント
+  - **どのような改善点がありますか。** . . . 資料の内容に改善点を見出し提案することを期待。・
+  - **資料の各部分に対して補足説明を加えてください。** . . . 補足説明を期待。
+  - **資料の各部分に対して具体例を追加してください。** . . . 具体例を期待。
+  - **資料の各部分で用いられている全てのキーワードをリスト化しキーワードを説明してください。** . . . キーワードの理解を促進。
+  - **資料の各部分で用いられている全ての専門用語をリスト化し専門用語を詳細に補足説明してください。** . . . 専門用語の理解を促進。
+  - **資料の各部分を解析し読みやすい文章構成に修正してください。各見出しはフェーズ１から順にしてください。** . . . 補足説明を期待。
+  - **** . . .
+# 注意事項
+  - より詳細に把握するためには、このプロンプトだけでは不十分です。
+  - 資料を把握する取っ掛かりとしてご利用ください。
+--------------------------------------------------------------------------------------------------------------------
+````
+</details>
+
+#### タグ
+`#` `#` `#`
+
+---
+<br/><br/> <br/><br/>
+
+
+
+
+
+
+
+
+
+
 ### 🔴🟡🟢 
 #### プロンプトテンプレート
 ````markdown
