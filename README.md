@@ -772,126 +772,7 @@ sqlite_web test.db -p 8081
 🌸😊You: 
 簡潔に要約してください。
 
-![](http://media.charlesleifer.com/blog/photos/sqlite-web.png)
-
-`sqlite-web` is a web-based SQLite database browser written in Python.
-
-Project dependencies:
-
-* [flask](http://flask.pocoo.org)
-* [peewee](http://docs.peewee-orm.com)
-* [pygments](http://pygments.org)
-
-### Installation
-
-```sh
-$ pip install sqlite-web
-```
-
-### Usage
-
-```sh
-$ sqlite_web /path/to/database.db
-```
-
-### Features
-
-* Works with your existing SQLite databases, or can be used to create new databases.
-* Add or drop:
-  * Tables
-  * Columns (with support for older versions of Sqlite)
-  * Indexes
-* Export data as JSON or CSV.
-* Import JSON or CSV files.
-* Browse table data.
-* Insert, Update or Delete rows.
-
-### Screenshots
-
-The index page shows some basic information about the database, including the number of tables and indexes, as well as its size on disk:
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620302295.png)
-
-The `structure` tab displays information about the structure of the table, including columns, indexes, triggers, and foreign keys (if any exist). From this page you can also create, rename or drop columns and indexes.
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620314144.png)
-
-Columns are easy to add, drop or rename:
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620333535.png)
-
-The `content` tab displays all the table data. Links in the table header can be used to sort the data:
-
-![](https://media.charlesleifer.com/blog/photos/im-1707415896996.png)
-
-The `query` tab allows you to execute arbitrary SQL queries on a table. The query results are displayed in a table and can be exported to either JSON or CSV:
-
-![](https://media.charlesleifer.com/blog/photos/im-1707415396996.png)
-
-The `import` tab supports importing CSV and JSON files into a table. There is an option to automatically create columns for any unrecognized keys in the import file:
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620413940.png)
-
-The `export` tab supports exporting all, or a subset, of columns:
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620429054.png)
-
-Basic INSERT, UPDATE and DELETE queries are supported:
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620441528.png)
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620459831.png)
-
-![](https://media.charlesleifer.com/blog/photos/im-1694620475286.png)
-
-### Command-line options
-
-The syntax for invoking sqlite-web is:
-
-```console
-
-$ sqlite_web [options] /path/to/database-file.db
-```
-
-The following options are available:
-
-* `-p`, `--port`: default is 8080
-* `-H`, `--host`: default is 127.0.0.1
-* `-d`, `--debug`: default is false
-* `-l`, `--log-file`: filename for application logs.
-* `-x`, `--no-browser`: do not open a web-browser when sqlite-web starts.
-* `-P`, `--password`: prompt for password to access sqlite-web.
-  Alternatively, the password can be stored in the "SQLITE_WEB_PASSWORD"
-  environment variable, in which case the application will not prompt for a
-  password, but will use the value from the environment.
-* `-r`, `--read-only`: open database in read-only mode.
-* `-R`, `--rows-per-page`: set pagination on content page, default 50 rows.
-* `-Q`, `--query-rows-per-page`: set pagination on query page, default 1000 rows.
-* `-T`, `--no-truncate`: disable ellipsis for long text values. If this option
-  is used, the full text value is always shown.
-* `-e`, `--extension`: path or name of loadable extension(s). To load
-  multiple extensions, specify ``-e [path]`` for each extension.
-* `-f`, `--foreign-keys`: enable foreign-key constraint pragma.
-* `-u`, `--url-prefix`: URL prefix for application, e.g. "/sqlite-web".
-* `-c`, `--cert` and ``-k``, ``--key`` - specify SSL cert and private key.
-* `-a`, `--ad-hoc` - run using an ad-hoc SSL context.
-
-### Using docker
-
-A Dockerfile is provided with sqlite-web. To use:
-
-```console
-
-$ cd docker/  # Change dirs to the dir containing Dockerfile
-$ docker build -t coleifer/sqlite-web .
-$ docker run -it --rm \
-    -p 8080:8080 \
-    -v /path/to/your-data:/data \
-    -e SQLITE_DATABASE=db_filename.db \
-    coleifer/sqlite-web
-```
-
-
+（`sqlite-web`のREADME）
 
 🚀🤖Copilot: 
 `sqlite-web`はPythonで書かれたSQLiteデータベースブラウザのWebアプリケーションです。主な特徴として、既存のSQLiteデータベースを操作でき、テーブル、列、インデックスの追加や削除、データのエクスポートとインポートなどがサポートされています。また、SQLクエリの実行も可能で、結果はJSONやCSV形式で取得できます。コマンドラインオプションでポート番号、ホストアドレス、デバッグモードなどを指定できます。Dockerを使用して簡単に実行することもできます。
@@ -999,11 +880,16 @@ $ docker run -it --rm \
   - **資料の各部分に対して具体例を追加してください。** . . . 具体例を期待。
   - **資料の各部分で用いられている全てのキーワードをリスト化しキーワードを説明してください。** . . . キーワードの理解を促進。
   - **資料の各部分で用いられている全ての専門用語をリスト化し専門用語を詳細に補足説明してください。** . . . 専門用語の理解を促進。
-  - **資料の各部分を解析し読みやすい文章構成に修正してください。各見出しはフェーズ１から順にしてください。** . . . 補足説明を期待。
-  - **** . . .
+  - **下記の資料に対する解説書を作成してください。フェーズ１から段階的に完成度を高めるものとします。** . . . 全体の解釈を期待。
+  - **下記の資料に対して想定され得る限りのFAQをリスト形式で作成してください。** . . . FAQ形式の理解促進を期待。
+  - **下記の資料に対する応用例をいくつか検討してください。どのような場面で役に立ちますか。** . . . 利用イメージの明確化。
+  - **資料の各部分に対してテキストベースにより様々な関連図を作成してください。** . . . 関連図により理解促進を期待。
+  - **資料の各部分に対してMermaid構文により様々な関連図を作成してください。** . . . 同上。
+  - **資料の各部分で用いられている全てのキーワードを基にテキストベースにより様々な関連図を作成してください。** . . . 同上。
+  - **資料の各部分で用いられている全てのキーワードを基にMermaid構文により様々な関連図を作成してください。** . . . 同上。
 # 注意事項
   - より詳細に把握するためには、このプロンプトだけでは不十分です。
-  - 資料を把握する取っ掛かりとしてご利用ください。
+  - このプロンプトは資料を把握する取っ掛かりとして利用し、その後は元の資料自体を詳しく把握する必要があります。
 --------------------------------------------------------------------------------------------------------------------
 ````
 </details>
