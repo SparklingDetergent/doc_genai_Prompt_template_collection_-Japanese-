@@ -274,6 +274,127 @@
 
 
 
+
+
+
+### 🟡 構造化プロンプト: XML/HTMLタグ形式: 構造化されたタスク実行プロンプト
+#### プロンプトテンプレート
+````markdown
+<request>
+  <language>[言語指定]</language>
+  <task>[タスク名]</task>
+  <details>
+    <description>[タスクの詳細な説明]</description>
+    <constraints>
+      <constraint>[制約条件1]</constraint>
+      <constraint>[制約条件2]</constraint>
+      <!-- 必要に応じて制約条件を追加 -->
+    </constraints>
+    <outputFormat>[出力形式]</outputFormat>
+  </details>
+</request>
+````
+
+<details>
+  <summary>生成結果</summary>
+
+````markdown
+
+  
+🌸😊You: 
+<request>
+  <language>Python</language>
+  <task>JSONファイルの読み書き</task>
+  <details>
+    <description>Pythonを用いて、JSONファイルからデータを読み取り、特定の形式で加工した上で新しいJSONファイルに書き込むプログラムを作成してください。</description>
+    <constraints>
+      <constraint>標準ライブラリのみを使用すること</constraint>
+      <constraint>ファイルの例外処理を実装すること</constraint>
+    </constraints>
+    <outputFormat>Pythonコード</outputFormat>
+  </details>
+</request>
+
+🚀🤖AI: 
+## PythonでJSONファイルを読み書きするプログラム
+
+```python
+import json
+
+def process_json(input_file, output_file):
+    try:
+        # JSONファイルを読み込む
+        with open(input_file, 'r') as f:
+            data = json.load(f)
+
+        # ここに加工処理を書く（例：特定のキーの値を変更）
+        for item in data:
+            item['new_key'] = item['old_key'] * 2
+
+        # 加工後のデータを新しいJSONファイルに書き込む
+        with open(output_file, 'w') as f:
+            json.dump(data, f, indent=4)
+
+    except FileNotFoundError:
+        print(f"ファイルが見つかりません: {input_file}")
+    except json.JSONDecodeError:
+        print(f"JSON形式のエラーが発生しました: {input_file}")
+
+# ファイル名を指定
+input_file = 'input.json'
+output_file = 'output.json'
+
+process_json(input_file, output_file)
+```
+
+````
+
+</details>
+<details>
+  <summary>テンプレート説明</summary>
+
+````markdown
+--------------------------------------------------------------------------------------------------------------------
+# 目的
+  - 情報を構造化し、特定のフォーマットに基づいて生成AIにタスクを依頼すること。
+# 使用シーン
+  - 特定のフォーマットで整理された情報をもとに、コードや文書を生成する際に有効。
+  - 自動化されたツールチェーンやシステム統合の一環として利用。
+# 期待される効果
+  - 情報を視覚的に整理し、明確で誤解のない指示を与えることで、精度の高い出力が期待できる。
+# キーワード
+  - **構造化プロンプト** . . . 特定の形式（例: XML/HTMLタグ形式）で情報を整理。
+  - **制約条件** . . . タスク実行のための具体的な条件や制限。
+  - **出力フォーマット指定** . . . 出力の形式を明示的に指定。
+# 詳細な説明
+  - `<language>`タグで言語やツールを指定することで、対象技術の明示が可能。
+  - `<task>`タグにタスクの種類や目標を簡潔に記述する。
+  - `<details>`タグの中でタスクに必要な詳細情報や制約条件を網羅。
+  - `<outputFormat>`タグで希望する出力形式を具体的に記述することで、期待通りの出力を得られる。
+# カスタマイズのポイント
+  - `<description>`に具体的な期待内容を書くことで精度が向上。
+  - `<constraints>`の制約条件を複数指定することで、生成結果の品質をコントロール可能。
+  - `<outputFormat>`を柔軟に設定することで、ドキュメントやコード以外の形式（例: JSONデータなど）にも対応可能。
+# 注意事項
+  - フォーマットの厳密さを保つことが重要。不正確なタグや構造は誤解を招く可能性がある。
+  - 制約条件を過度に指定すると、生成AIの出力が制限されすぎる場合がある。
+--------------------------------------------------------------------------------------------------------------------
+````
+
+</details>
+
+#### タグ
+`#構造化プロンプト` `#タスク実行` `#出力フォーマット指定` 
+
+--- 
+<br/><br/> <br/><br/>
+
+
+
+
+
+
+
 ### 🟡 生成AIの回答の精度やボリュームを高めたい
 #### プロンプトテンプレート
 ````markdown
